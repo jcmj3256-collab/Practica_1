@@ -1,7 +1,9 @@
 # Practica 1 "Modelo Entidad - Relacion"  
+## INTEGRANTES  
 **Nombre:**   
 **Carrera:** ISC  
 **Grupo:** 3CV2  
+
 **Nombre:** Jose Carlos Muñoz Jaimes  
 **Carrera:** ISC  
 **Grupo:** 3CV2  
