@@ -298,6 +298,28 @@ Si la capa inferior se divide a su vez en un servidor web y un servidor de base 
  
 Además, los avances en cifrado y compresión de datos ayudan a que la transferencia de información entre servidores y clientes sea más segura y eficiente, aunque la seguridad de las redes sigue siendo una preocupación importante.
 
+# 8. Modelos de datos
+ 
+## Importancia de los modelos de datos
+ 
+Una característica fundamental del enfoque de bases de datos es que ofrece cierto nivel de abstracción de los datos: se suprimen los detalles de cómo se organizan y almacenan físicamente, para resaltar únicamente las características relevantes que permiten comprenderlos mejor. Gracias a esta abstracción, distintos usuarios pueden percibir los mismos datos con el nivel de detalle que prefieran o necesiten.
+ 
+Un **modelo de datos** es una colección de conceptos que permite describir la estructura de una base de datos (los tipos de datos, relaciones y restricciones que deben mantenerse), y es precisamente lo que hace posible esa abstracción. La mayoría de los modelos de datos también incluyen un conjunto de operaciones básicas para consultar y actualizar la base de datos, e incluso, cada vez más, conceptos para especificar el comportamiento dinámico de una aplicación (por ejemplo, una operación definida por el usuario como calcular el promedio de un estudiante).
+ 
+## Clasificación por nivel de abstracción
+ 
+Los modelos de datos se clasifican según qué tan cerca están de la forma en que los usuarios perciben los datos, frente a cómo se almacenan realmente en la computadora:
+ 
+- **Modelos de datos de alto nivel o conceptuales:** ofrecen conceptos muy cercanos a la forma en que los usuarios perciben los datos, como entidades (objetos o conceptos del mundo real, por ejemplo un empleado), atributos (propiedades de una entidad, como su nombre o salario) y relaciones (asociaciones entre entidades, como la relación de trabajo entre un empleado y un proyecto). El modelo Entidad-Relación es un ejemplo clásico de este tipo.
+- **Modelos de datos representativos o de implementación:** se ubican en un punto intermedio; ofrecen conceptos que los usuarios finales pueden entender, sin estar demasiado alejados de cómo se organizan los datos internamente en la computadora. Aquí se ubican los modelos más usados en los DBMS comerciales, como el modelo relacional, y los modelos heredados de red y jerárquico.
+- **Modelos de datos de bajo nivel o físicos:** describen los detalles de cómo se almacenan realmente los datos en la computadora (formatos de registro, ordenación, rutas de acceso, índices, etc.). Están pensados principalmente para especialistas en cómputo, no para usuarios finales.
+## Clasificación por estructura
+ 
+Otra forma de clasificar los modelos de datos es según cómo estructuran la información:
+ 
+- **Modelos basados en registros:** representan los datos mediante estructuras de registro; a este grupo pertenecen los modelos representativos ya mencionados (relacional, de red y jerárquico), que son los más utilizados tradicionalmente en los DBMS comerciales.
+- **Modelos basados en objetos (familia ODMG):** conforman una familia más reciente de modelos de implementación de alto nivel, más cercana a los modelos conceptuales. A menudo también se utilizan como modelos conceptuales de alto nivel, sobre todo en el ámbito de la ingeniería de software.
+
  ---
  
 **Referencias**
