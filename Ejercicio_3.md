@@ -258,6 +258,46 @@ Los DBMS se clasifican según varios criterios:
 - **Costo:** va desde soluciones de código abierto y gratuitas (como MySQL o PostgreSQL) hasta sistemas empresariales que pueden costar millones de dólares al año en licencias, mantenimiento y soporte.
 - **Propósito:** de propósito general (para múltiples aplicaciones) o de propósito especial (diseñados para una aplicación específica, como los sistemas de reservas de aerolíneas, muchas veces asociados a procesamiento de transacciones en línea u OLTP).
 
+# 7. Sistema de base de datos: arquitectura, independencia de datos y arquitecturas centralizada y cliente-servidor
+ 
+## Arquitectura de tres niveles (esquemas)
+ 
+**Fuente:** Elmasri, R., & Navathe, S. B. *Fundamentos de sistemas de bases de datos*. Capítulo 2.
+ 
+La arquitectura de tres esquemas (también conocida como arquitectura ANSI-SPARC) organiza la base de datos en tres niveles:
+ 
+- **Nivel interno:** cuenta con un esquema interno, que describe la estructura de almacenamiento físico de la base de datos. Utiliza un modelo de datos físico y detalla todo lo relacionado con el almacenamiento de los datos y las rutas de acceso a ellos.
+- **Nivel conceptual:** cuenta con un esquema conceptual, que describe la estructura de toda la base de datos para una comunidad de usuarios. Oculta los detalles de las estructuras de almacenamiento físico y se concentra en describir las entidades, los tipos de datos, las relaciones, las operaciones de los usuarios y las restricciones. Suele describirse mediante un modelo de datos representativo, a menudo basado en un diseño previo con un modelo de datos de alto nivel.
+- **Nivel de vista o externo:** incluye varios esquemas externos o vistas de usuario. Cada esquema externo describe la parte de la base de datos que interesa a un grupo particular de usuarios, ocultándoles el resto de la base de datos. Al igual que el esquema conceptual, normalmente se implementa mediante un modelo de datos representativo.
+## Independencia de datos
+ 
+**Fuente:** Elmasri, R., & Navathe, S. B. *Fundamentos de sistemas de bases de datos*. Capítulo 2.
+ 
+La arquitectura de tres esquemas permite explicar el concepto de independencia de datos: la capacidad de cambiar el esquema en un nivel del sistema sin tener que modificar el esquema del nivel inmediatamente superior. Existen dos tipos:
+ 
+- **Independencia lógica de datos:** es la capacidad de cambiar el esquema conceptual (por ejemplo, para expandir la base de datos agregando un tipo de registro, o para reducirla eliminando uno) sin tener que modificar los esquemas externos ni los programas de aplicación que dependen de ellos. Es más difícil de lograr, porque implica que los cambios estructurales o de restricciones no afecten a las aplicaciones existentes.
+- **Independencia física de datos:** es la capacidad de cambiar el esquema interno (por ejemplo, reorganizando archivos físicos o agregando estructuras de acceso para mejorar el rendimiento) sin necesidad de modificar el esquema conceptual ni los esquemas externos. Este tipo de independencia sí se logra en la mayoría de las bases de datos actuales, ya que se le ocultan al usuario los detalles de cómo y dónde se almacenan físicamente los datos.
+Cuando el esquema de un nivel cambia, solo se actualiza el mapeo entre ese nivel y el siguiente, gracias a la información de mapeo que el DBMS mantiene en su catálogo; así, las aplicaciones que hacen referencia al nivel superior no necesitan modificarse. Sin embargo, mantener estos mapeos entre niveles genera cierta sobrecarga de procesamiento, razón por la cual pocos DBMS implementan la arquitectura de tres esquemas de forma completa.
+ 
+## Arquitectura centralizada
+ 
+Las arquitecturas de los DBMS han seguido tendencias similares a las de los sistemas de cómputo en general. En un inicio, se usaban mainframes que procesaban todas las funciones del sistema —incluyendo las aplicaciones de usuario, las interfaces y toda la funcionalidad del DBMS— mientras los usuarios accedían mediante terminales sin capacidad de procesamiento propio, que solo mostraban información. Cuando bajó el precio del hardware y los usuarios empezaron a usar PCs y estaciones de trabajo, al principio estas computadoras se usaban de forma similar a los terminales: el DBMS seguía siendo centralizado, con toda la funcionalidad, ejecución de aplicaciones e interacción del usuario ocurriendo en una sola máquina. Con el tiempo, los sistemas comenzaron a aprovechar la capacidad de procesamiento disponible del lado del usuario, lo que dio origen a las arquitecturas cliente/servidor.
+ 
+## Arquitectura cliente-servidor
+ 
+La arquitectura cliente/servidor surgió para entornos donde múltiples PCs, estaciones de trabajo, servidores de archivos, impresoras y servidores de bases de datos están conectados a través de una red. La idea central es definir servidores especializados con funciones específicas (por ejemplo, un servidor de archivos, uno de impresión, o uno de bases de datos), a los que acceden múltiples máquinas cliente. Un **cliente** es típicamente la máquina de un usuario, que ofrece interfaz y procesamiento local; un **servidor** es un sistema con el hardware y software necesarios para prestar servicios a los clientes (acceso a archivos, impresión, bases de datos, etc.). Sobre esta estructura básica se desarrollaron dos tipos principales de arquitecturas DBMS: de **dos capas** (el cliente se conecta directamente al servidor de base de datos) y de **tres capas**, descrita a continuación.
+ 
+Muchas aplicaciones web utilizan justamente esta arquitectura de **tres capas**, que agrega una capa intermedia entre el cliente y el servidor de base de datos. Esta capa intermedia se conoce como **servidor de aplicaciones** o **servidor web**, y actúa como intermediaria almacenando las reglas de negocio (procedimientos o restricciones) usadas para acceder a los datos del servidor de bases de datos; también puede mejorar la seguridad verificando las credenciales del cliente antes de enviar una solicitud al servidor de bases de datos.
+ 
+En esta arquitectura:
+- Los **clientes** contienen las interfaces gráficas (GUI) y algunas reglas de negocio específicas de la aplicación.
+- El **servidor intermedio** acepta las solicitudes del cliente, las procesa, envía comandos a la base de datos, y luego actúa como conducto para pasar los datos (parcialmente procesados) de vuelta al cliente, donde se terminan de procesar para mostrarse al usuario.
+Así, la interfaz de usuario, las reglas de negocio y el acceso a los datos forman las tres capas. También existe una variante equivalente con otra nomenclatura: **capa de presentación** (muestra información y permite la entrada de datos), **capa lógica de negocio** (aplica las reglas y restricciones intermedias) y **capa de servicios de base de datos** (administración de los datos).
+ 
+Si la capa inferior se divide a su vez en un servidor web y un servidor de base de datos, se obtiene una **arquitectura de cuatro capas**. Es común dividir aún más las capas entre el usuario y los datos almacenados, dando lugar a **arquitecturas de n-capas** (donde n suele ser 4 o 5), generalmente subdividiendo la capa lógica de negocio. Esto permite que cada capa se ejecute en el procesador o sistema operativo más adecuado, y que se manipule de forma independiente. En sistemas ERP y CRM también suele usarse una capa adicional llamada **middleware**, que conecta los módulos front-end con varias bases de datos back-end.
+ 
+Además, los avances en cifrado y compresión de datos ayudan a que la transferencia de información entre servidores y clientes sea más segura y eficiente, aunque la seguridad de las redes sigue siendo una preocupación importante.
+
  ---
  
 **Referencias**
