@@ -45,7 +45,43 @@ desconectados con datos redundantes, todos los elementos de datos están integra
 más o menos en el tema, en este caso, la definición de Connolly además de dar la definición, también nos habla sobre 
 duplicidad y redundancia de datos, que es algo que todavía no se ha explicado pero que se verá más adelante en el documento.
 
----
+## 2. Características de una base de datos
+ 
+Como se definió en la parte anterior, una base de datos es una colección compartida de datos relacionados que se utiliza para apoyar las actividades de una organización en particular. Esta tiene las siguientes características:
+ 
+## Integración
+ 
+En el enfoque de bases de datos, idealmente cada elemento de datos se almacena en un solo lugar de la base de datos. La integración de todos los datos de una organización dentro de un sistema de base de datos tiene varias ventajas: primero, permite compartir los datos entre los empleados y demás personas que tienen acceso al sistema; segundo, da a los usuarios la capacidad de generar más información a partir de una cantidad determinada de datos de la que sería posible sin dicha integración.
+ 
+## Persistencia
+ 
+Silberschatz, Korth y Sudarshan explican que los lenguajes de las bases de datos se diferencian de los lenguajes de programación tradicionales en que trabajan directamente con datos que son persistentes, es decir, datos que siguen existiendo una vez que el programa que los creó ha concluido. Las relaciones de las bases de datos y sus tuplas son ejemplos de datos persistentes; en cambio, los únicos datos persistentes con los que trabajan directamente los lenguajes de programación tradicionales son los archivos.
+ 
+## Redundancia controlada
+ 
+La redundancia de datos es una situación que ocurre en una base de datos cuando un campo necesita actualizarse en más de una tabla. En el enfoque de bases de datos, idealmente cada elemento de datos se almacena en un solo lugar. En algunos casos la redundancia de datos aún existe para mejorar el rendimiento del sistema, pero dicha redundancia es controlada mediante la programación de las aplicaciones y se mantiene al mínimo, introduciendo la menor redundancia posible al diseñar la base de datos.
+ 
+## Integridad
+ 
+La integridad de los datos se refiere al mantenimiento y aseguramiento de que los datos en una base de datos sean correctos y consistentes.
+ 
+## Independencia de datos
+ 
+Otra ventaja de un sistema gestor de bases de datos es que permite la independencia de los datos. Es decir, las descripciones de los datos del sistema, o los datos que describen a los datos (metadatos), están separados de los programas de aplicación. Esto es posible porque los cambios en la estructura de los datos son manejados por el sistema gestor de la base de datos y no están incrustados en el programa mismo.
+ 
+## Seguridad
+ 
+No todos los usuarios de un sistema de base de datos tendrán los mismos privilegios de acceso. Por ejemplo, un usuario podría tener acceso de solo lectura (es decir, la capacidad de leer un archivo pero no modificarlo), mientras que otro podría tener privilegios de lectura y escritura (la capacidad de leer y modificar un archivo). Por esta razón, un sistema gestor de bases de datos debe proporcionar un subsistema de seguridad para crear y controlar distintos tipos de cuentas de usuario y restringir el acceso no autorizado.
+ 
+## Concurrencia
+ 
+La concurrencia es la capacidad de la base de datos de permitir que múltiples usuarios accedan al mismo registro sin afectar negativamente el procesamiento de las transacciones. Esto se logra mediante las llamadas estrategias de control de concurrencia: funciones de la base de datos que permiten que varios usuarios accedan al mismo elemento de datos al mismo tiempo.
+ 
+## Recuperación
+ 
+El respaldo (backup) y la recuperación son métodos que permiten proteger los datos contra su pérdida. El sistema de base de datos proporciona un proceso independiente al del respaldo de red, dedicado a respaldar y recuperar los datos. Si un disco duro falla y la base de datos almacenada en él deja de estar accesible, la única forma de recuperarla es a partir de un respaldo. Si un sistema informático falla en medio de un proceso complejo de actualización, el subsistema de recuperación es responsable de asegurar que la base de datos sea restaurada a su estado original.
+
+ ---
  
 **Referencias**
  
@@ -58,3 +94,5 @@ https://resources.saylor.org/wwwresources/archived/site/textbooks/Information%20
  
 Connolly, T. (2005, 4th Edition Pearson Educated). 
 *Database Systems: A Practical Approach to Design, Implementation, and Management*.
+
+Silberschatz, A., Korth, H. F., & Sudarshan, S. *Fundamentos de bases de datos*. McGraw-Hill. Quinta Edición (2006)    
