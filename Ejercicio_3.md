@@ -81,6 +81,32 @@ La concurrencia es la capacidad de la base de datos de permitir que múltiples u
  
 El respaldo (backup) y la recuperación son métodos que permiten proteger los datos contra su pérdida. El sistema de base de datos proporciona un proceso independiente al del respaldo de red, dedicado a respaldar y recuperar los datos. Si un disco duro falla y la base de datos almacenada en él deja de estar accesible, la única forma de recuperarla es a partir de un respaldo. Si un sistema informático falla en medio de un proceso complejo de actualización, el subsistema de recuperación es responsable de asegurar que la base de datos sea restaurada a su estado original.
 
+## 3. Archivos frente a bases de datos
+ 
+## Redundancia
+ 
+En los sistemas basados en archivos, es común que la misma información se almacene por duplicado en distintos archivos (por ejemplo, un departamento de Ventas y uno de Contratos guardando datos similares de un mismo cliente o propiedad). El enfoque de bases de datos integra estos archivos para reducir esa duplicación, aunque no la elimina por completo: a veces se mantiene cierta redundancia de forma controlada, ya sea para representar relaciones entre datos o para mejorar el rendimiento.
+ 
+## Inconsistencia
+ 
+Cuando un dato se repite en varios archivos sin control, actualizarlo implica hacerlo en cada copia por separado, lo que aumenta el riesgo de que las copias queden desincronizadas (inconsistentes). Al reducir o controlar la redundancia mediante una base de datos, un dato solo necesita actualizarse una vez, y el nuevo valor está disponible de inmediato para todos los usuarios.
+ 
+## Dependencia programa-datos
+ 
+En los sistemas basados en archivos, la descripción de los datos y la lógica para acceder a ellos están incrustadas dentro de cada programa de aplicación, lo que hace que los programas dependan directamente de la estructura de los datos. Cualquier cambio en esa estructura (por ejemplo, ampliar el tamaño de un campo) puede obligar a modificar todos los programas afectados. Un sistema gestor de bases de datos, en cambio, separa la descripción de los datos de las aplicaciones, logrando independencia de datos y facilitando el mantenimiento.
+ 
+## Por qué el enfoque de archivos dio origen a los sistemas gestores
+ 
+Estos tres problemas (redundancia, inconsistencia y dependencia programa-datos) generaban sistemas costosos de mantener, propensos a errores y difíciles de escalar conforme una organización crecía y sus departamentos necesitaban compartir información entre sí. Los sistemas gestores de bases de datos (DBMS) surgieron como respuesta a estas limitaciones: al centralizar los datos en un solo repositorio integrado y controlado por un software especializado, se resolvían de raíz la duplicación descontrolada, la falta de consistencia y la rigidez que generaba la dependencia entre programas y datos, además de aportar beneficios adicionales como seguridad, control de concurrencia y respaldo/recuperación centralizados.
+ 
+## Desventajas
+ 
+Aunque las bases de datos tienen muchísimas ventajas sobre los archivos físicos, sigue siendo importante tener en cuenta que no son un sistema definitivo y que, dependiendo de las necesidades, capacidades y usuarios, pueden no ser el mejor método.
+ 
+Un ejemplo de esto es su complejidad: una base de datos puede llegar a ser una pieza de software muy compleja, en la que cambios en el diseño pueden causar serias consecuencias para una organización. Si además se desea que un profesional la administre, hay que considerar su salario, y si a esto se le suman servicios adicionales, como el almacenamiento en la nube, los costos van creciendo aún más.
+ 
+Por último, las bases de datos pueden llegar a depender de otros servicios (como el mencionado anteriormente de guardar archivos en la nube) y los usuarios no siempre pueden confiar en que todos los componentes del sistema funcionen en su totalidad todo el tiempo, ya que una falla puede provocar la pérdida de información u otros recursos de gran valor.
+ 
  ---
  
 **Referencias**
