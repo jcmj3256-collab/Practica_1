@@ -226,6 +226,38 @@ El sistema de base de datos ya está completamente implementado. Se monitorea y 
  
 **Entregable:** el sistema en operación continua, con actualizaciones y ajustes documentados conforme surgen nuevas necesidades.
 
+# 6. Sistema gestor de bases de datos
+ 
+## Módulos componentes
+ 
+Los sistemas de bases de datos se dividen en módulos que atienden cada una de las responsabilidades del sistema general. A grandes rasgos, los componentes funcionales se dividen en el **gestor de almacenamiento** y el **procesador de consultas**:
+ 
+- **Gestor de almacenamiento:** es fundamental porque las bases de datos suelen requerir grandes cantidades de espacio (desde cientos de gigabytes hasta terabytes en las bases de datos corporativas más grandes). Como la memoria principal no puede almacenar toda esa información, los datos se guardan en disco y se intercambian con la memoria principal cuando se necesitan. Dado que este intercambio es lento comparado con la velocidad del procesador, el sistema debe estructurar los datos para minimizar dicho intercambio.
+- **Procesador de consultas:** ayuda a simplificar y facilitar el acceso a los datos mediante vistas de alto nivel, de modo que los usuarios no tengan que lidiar con los detalles físicos de la implementación. Es responsable de traducir las actualizaciones y consultas escritas en lenguajes no procedimentales (a nivel lógico) en una secuencia eficiente de operaciones a nivel físico.
+- **Gestor de transacciones:** garantiza que la base de datos permanezca en un estado consistente (correcto) a pesar de fallos del sistema, y que la ejecución concurrente de transacciones se realice sin conflictos.
+*(Pendiente: agregar aquí lo relacionado con el catálogo/diccionario de datos si tu libro lo menciona como módulo aparte.)*
+ 
+## Lenguajes de bases de datos
+ 
+- **DDL (lenguaje de definición de datos):** se utiliza para definir el esquema conceptual (y, en algunos DBMS, también el interno) de la base de datos. El DBMS cuenta con un compilador DDL que procesa estas sentencias, identifica las estructuras del esquema y guarda su descripción en el catálogo del sistema.
+- **DML (lenguaje de manipulación de datos):** permite a los usuarios recuperar, insertar, borrar y modificar datos una vez que la base de datos ya existe y contiene información. Existen dos tipos:
+  - **DML de alto nivel (no procedimental o declarativo):** permite especificar operaciones complejas de forma concisa, indicando qué datos se quieren recuperar en lugar de cómo hacerlo. Puede usarse de forma interactiva o incrustado en un lenguaje de programación. También se le llama *set-at-a-time*, porque puede recuperar varios registros con una sola sentencia (SQL es el ejemplo típico).
+  - **DML de bajo nivel (procedimental):** debe incrustarse en un lenguaje de programación de propósito general y recupera los registros uno por uno (*record-at-a-time*), por lo que se necesitan estructuras como bucles para procesar varios registros.
+- **VDL (lenguaje de definición de vistas):** se utiliza para especificar las vistas de usuario y su mapeo hacia el esquema conceptual. En los DBMS relacionales, SQL cumple esta función.
+- **SDL (lenguaje de definición de almacenamiento):** se utiliza para especificar el esquema interno (físico) de la base de datos. En los DBMS relacionales actuales ya no suele existir como lenguaje independiente; en su lugar, el personal del DBA controla la indexación y el almacenamiento mediante parámetros y especificaciones propias del sistema.
+- **Lenguaje integrado (caso de SQL):** en los DBMS actuales, estos lenguajes normalmente no están separados, sino que se combinan en un solo lenguaje comprensivo. SQL, por ejemplo, combina DDL, VDL y DML, además de sentencias para restricciones y evolución del esquema.
+- **Control de transacciones:** SQL incluye comandos para especificar el inicio y el final de una transacción (por ejemplo, COMMIT para confirmar los cambios y ROLLBACK para deshacerlos), lo cual está a cargo del gestor de transacciones mencionado en la sección de módulos.
+- **DCL (lenguaje de control de datos):** SQL cuenta con estructuras de lenguaje para especificar la concesión y revocación de privilegios a los usuarios. Estos privilegios normalmente corresponden al derecho de utilizar ciertos comandos SQL (como SELECT, INSERT, DELETE o UPDATE) para acceder a determinadas relaciones. A cada relación se le asigna un propietario, quien —junto con el personal del DBA— puede otorgar a usuarios seleccionados el privilegio de usar esas sentencias, así como el privilegio de crear esquemas, tablas o vistas. Estos comandos se conocen como **GRANT** y **REVOKE**.
+## Clasificación de los DBMS
+ 
+Los DBMS se clasifican según varios criterios:
+ 
+- **Modelo de datos:** relacional (el más usado actualmente), orientado a objetos, objeto-relacional, jerárquico o de red. Los modelos jerárquico y de red son más antiguos, pero todavía se usan en sistemas heredados (por ejemplo, IMS de IBM).
+- **Número de usuarios:** sistemas de un solo usuario (usados sobre todo en PCs) frente a sistemas multiusuario, que permiten acceso simultáneo de varias personas (la mayoría de los DBMS actuales).
+- **Número de sitios:** un DBMS **centralizado** almacena los datos en un solo computador; un DBMS **distribuido (DDBMS)** reparte los datos y el software entre varios sitios conectados por red. Cuando varios DBMS autónomos se acoplan entre sí, se le llama DBMS **federado**.
+- **Costo:** va desde soluciones de código abierto y gratuitas (como MySQL o PostgreSQL) hasta sistemas empresariales que pueden costar millones de dólares al año en licencias, mantenimiento y soporte.
+- **Propósito:** de propósito general (para múltiples aplicaciones) o de propósito especial (diseñados para una aplicación específica, como los sistemas de reservas de aerolíneas, muchas veces asociados a procesamiento de transacciones en línea u OLTP).
+
  ---
  
 **Referencias**
