@@ -60,3 +60,5 @@ La revisión obligatoria entre pares previa a la fusión es fundamental porque:
 
 * **Captura del Pull Request fusionado (Merged):**  
   `evidencias/git/pr-fusionado.png`
+
+<!-- Actualizacion de evidencias: Fernando Garcia -->
