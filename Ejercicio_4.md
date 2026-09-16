@@ -43,3 +43,31 @@
 
 6. **Aporte para el proyecto del curso:**  
    Brinda una perspectiva práctica sobre la vital necesidad de definir llaves primarias, llaves foráneas y reglas de integridad referencial estrictas, garantizando que el sistema soporte múltiples transacciones simultáneas sin corromper la consistencia de los datos.
+
+## Ficha Técnica 3 — Concurrencia Transaccional y Bancos de Prueba
+
+1. **Cita completa (APA 7ª edición):**
+ 
+   Li, D., & Li, B. (2026). A learning-based query optimization engine for music databases integrating adaptive decision systems and A3C reinforcement learning. *Systems and Soft Computing*, Article 200599. https://doi.org/10.1016/j.sasc.2026.200599
+ 
+2. **El problema que aborda el artículo:**
+ 
+   El artículo plantea cómo en las bases de datos de música, al combinar diferentes tipos de datos, pueden existir consultas ambiguas, que pueden ser correctas, pero que no reducen la búsqueda para considerarlas eficientes, lo que puede ser una mala experiencia para el usuario.
+ 
+3. **El método o la propuesta de los autores:**
+ 
+   Diferentes estrategias comprendidas en un sistema llamado ADS, en los que se comparan vectores semánticos, estadísticas, etc. Que básicamente la información ambigua ingresada por el usuario, se calcula qué tan probable es que se haya entendido la intención real del usuario.
+ 
+   Además de este, también se usa un algoritmo llamado A3C, que aprende con el tiempo qué tan buena fue cada decisión (usando como retroalimentación la relevancia y la rapidez del resultado), y así va mejorando su estrategia para futuras consultas, en lugar de decidir todo de una sola vez.
+ 
+4. **El resultado principal que reportan:**
+ 
+   El resultado principal es que el motor integrado (ADS + A3C) redujo el tiempo promedio de respuesta a una consulta a 1.38 minutos, frente a 3.45 minutos del motor tradicional basado en reglas, además de alcanzar un 93% de precisión en la coincidencia de resultados (21 puntos porcentuales más que el método tradicional).
+ 
+5. **Relación con la Unidad Temática I:**
+ 
+   Se relaciona con el procesador de consultas, ya que este dicta cómo se procesan los datos y decide cómo se ejecutan de manera más eficiente. El artículo propone cómo procesar estos datos, pero usando inteligencia artificial en vez de las reglas ya fijadas.
+ 
+6. **Aporte para el proyecto del curso:**
+ 
+   Este artículo me da una idea más a profundidad de cómo se procesan las consultas en una base de datos y qué deficiencias tienen los métodos tradicionales cuando los datos son complejos o ambiguos. Esto me sirve para pensar, desde ahora, en cómo estructurar y consultar eficientemente los datos de mi proyecto.
