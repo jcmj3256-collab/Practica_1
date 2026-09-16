@@ -53,12 +53,17 @@ La revisión obligatoria entre pares previa a la fusión es fundamental porque:
 4. **Historial de confirmaciones:** Mínimo de confirmaciones descriptivas distribuidas en el flujo de trabajo colaborativo.
 5. **Flujo de ramas y Pull Request:** Implementación de rama de característica, apertura de Pull Request descriptivo y fusión (*merge*) a la rama base.
 
-### Evidencias de ejecución
+## Evidencias de la Parte B
 
-* **Captura del historial de ramas y confirmaciones (`git log --oneline --graph --all`):**  
-  `evidencias/git/git-log-graph.png`
+### 1. Dirección del repositorio
+* https://github.com/jcmj3256-collab/Practica_1
 
-* **Captura del Pull Request fusionado (Merged):**  
-  `evidencias/git/pr-fusionado.png`
+### 2. Historial de confirmaciones y ramas
+Salida del comando `git log --oneline --graph --all`:
 
-<!-- Actualizacion de evidencias: Fernando Garcia -->
+![Historial de ramas y confirmaciones](evidencias/git/git-log-graph.png)
+
+### 3. Pull Request fusionado
+Captura del Pull Request aprobado e integrado:
+
+![Pull Request Merged](evidencias/git/pr-fusionado.png)
