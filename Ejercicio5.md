@@ -1,4 +1,4 @@
-# Identificación del problema y entrevista simulada: Clínica Veterinaria
+# Ejercicio 5. Caso de estudio y modelo entidad-relación
  
 ## 1. Identificación del problema
  
