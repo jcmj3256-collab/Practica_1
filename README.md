@@ -1,6 +1,7 @@
 # Practica 1 "Modelo Entidad - Relacion"  
 ## INTEGRANTES  
-**Nombre:** Garcia Verduzco Fernando
+
+**Nombre:** Garcia Verduzco Fernando 
 **Carrera:** ISC  
 **Grupo:** 3CV2  
 
