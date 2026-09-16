@@ -45,3 +45,13 @@ insertados y cualquier configuración hecha dentro de la base de datos.
 Al declarar un volumen, en cambio, los datos se guardan fuera del contenedor (en un directorio gestionado por Docker en el sistema anfitrión), por lo que 
 se pueden eliminar, recrear o actualizar contenedores libremente sin perder la información. Esto es justamente lo que permite, por ejemplo, actualizar 
 PostgreSQL de una versión a otra conservando toda la base de datos intacta.
+
+---
+
+## *Referencias*
+
+Docker Inc. (s.f.). Volumes. Docker Docs. https://docs.docker.com/engine/storage/volumes/
+
+Docker Inc. (s.f.). Persisting container data. Docker Docs. https://docs.docker.com/get-started/docker-concepts/running-containers/persisting-container-data/
+
+Docker Inc. (s.f.). Persist the DB. Docker Docs. https://docs.docker.com/guides/workshop/05_persisting_data/
