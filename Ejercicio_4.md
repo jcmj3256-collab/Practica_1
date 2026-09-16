@@ -44,7 +44,7 @@
 6. **Aporte para el proyecto del curso:**  
    Brinda una perspectiva práctica sobre la vital necesidad de definir llaves primarias, llaves foráneas y reglas de integridad referencial estrictas, garantizando que el sistema soporte múltiples transacciones simultáneas sin corromper la consistencia de los datos.
 
-## Ficha Técnica 3 — Concurrencia Transaccional y Bancos de Prueba
+## Ficha Técnica 3 — Optimización de búsquedas para bases de datos musicales
 
 1. **Cita completa (APA 7ª edición):**
  
