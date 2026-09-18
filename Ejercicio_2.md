@@ -55,3 +55,23 @@ Docker Inc. (s.f.). Volumes. Docker Docs. https://docs.docker.com/engine/storage
 Docker Inc. (s.f.). Persisting container data. Docker Docs. https://docs.docker.com/get-started/docker-concepts/running-containers/persisting-container-data/
 
 Docker Inc. (s.f.). Persist the DB. Docker Docs. https://docs.docker.com/guides/workshop/05_persisting_data/
+
+## Parte B. Evidencias de Ejecución Práctica
+
+### Orquestación de Contenedores con Docker Compose
+Se orquestó un entorno multi-contenedor compuesto por el motor relacional MariaDB, el panel de administración phpMyAdmin y el servidor de aplicación Apache/PHP bajo la red virtual `app-network`:
+
+![Servicios Docker Levantados](evidencias/docker-terminal.png)
+
+### Validación de Persistencia e Interacción Web
+Se ingresó a phpMyAdmin (`localhost`), comprobando la conexión con el motor, la creación de la base de datos `bd_operaciones` y la persistencia de los registros en la tabla:
+
+![Verificación en phpMyAdmin](evidencias/docker-phpmyadmin.png)
+
+---
+
+## Referencias
+
+* Docker Inc. (s.f.). *Volumes*. Docker Docs. https://docs.docker.com/engine/storage/volumes/[cite: 5]
+* Docker Inc. (s.f.). *Persisting container data*. Docker Docs. https://docs.docker.com/get-started/docker-concepts/running-containers/persisting-container-data/[cite: 5]
+* Docker Inc. (s.f.). *Persist the DB*. Docker Docs. https://docs.docker.com/guides/workshop/05_persisting_data/[cite: 5]
